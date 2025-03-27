@@ -20,10 +20,10 @@ export async function createDatasetSeries(currentstate, formData) {
     let response = {}
 
     const datasetSeriesSubmission = {
-        title: formData.get('datasetSeriesTitle'),
-        id: formData.get('datasetSeriesID'),
-        description: formData.get('datasetSeriesDescription'),
-        contacts: JSON.parse(formData.get('datasetSeriesContacts'))
+        title: formData.get('dataset-series-title'),
+        id: formData.get('dataset-series-id'),
+        description: formData.get('dataset-series-description'),
+        contacts: JSON.parse(formData.get('dataset-series-contacts'))
     }
 
     const result = schema.safeParse(datasetSeriesSubmission)
@@ -38,10 +38,10 @@ export async function createDatasetSeries(currentstate, formData) {
             const data = await httpPost(reqCfg, "/datasets", datasetSeriesSubmission);
             if (data.status == 403) {
                 response.success = false
-                response.recentlySumbitted = false
+                response.recentlySubmitted = false
                 response.code = data.status
             } else {
-                response.recentlySumbitted = true
+                response.recentlySubmitted = true
             }
         } catch (err) {
             return err.toString();

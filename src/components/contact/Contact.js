@@ -30,8 +30,8 @@ export default function Contact({contacts, setContacts, contactsError}) {
                                     </div>
                                     <div className="ons-grid__col ons-col-2@m">
                                         <Button
-                                        dataTestId="datasetSeriesRemoveContactButton"
-                                        id="datasetSeriesRemoveContactButton"
+                                        dataTestId="dataset-series-remove-contact-button"
+                                        id="dataset-series-remove-contact-button"
                                         text="Remove"
                                         variants={[
                                             'tertiary',
@@ -58,17 +58,17 @@ export default function Contact({contacts, setContacts, contactsError}) {
 
     return (
         <>
-            <Field dataTestId="field-datasetseriescontacts" error={contactsError ? {id:'dataSeriesContactsError', text: contactsError} : undefined}>
+            <Field dataTestId="field-dataset-series-contacts" error={contactsError ? {id:'dataset-series-contacts-error', text: contactsError} : undefined}>
             <h2>Contacts</h2>
-                <input id="datasetSeriesContacts" type="hidden" name="datasetSeriesContacts" value={JSON.stringify(contacts)} />
+                <input id="dataset-series-contacts" type="hidden" name="dataset-series-contacts" value={JSON.stringify(contacts)} />
                 {renderContactList()}
                 <div className='ons-container--wide'>
                     <div className="ons-grid ons-grid--spaced">                
                         <div className="ons-grid__col ons-col-5@m">
                             <TextInput
-                            id="datasetSeriesContactName"
-                            dataTestId="datasetSeriesContactName"
-                            name="datasetSeriesContactName"
+                            id="dataset-series-contact-name"
+                            dataTestId="dataset-series-contact-name"
+                            name="dataset-series-contact-name"
                             label={{
                                 text: 'Name: ',
                                 inline: true,
@@ -79,22 +79,22 @@ export default function Contact({contacts, setContacts, contactsError}) {
                         </div>
                         <div className="ons-grid__col ons-col-5@m ">
                             <TextInput
-                            id="datasetSeriesContactEmail"
-                            dataTestId="datasetSeriesContactEmail"
-                            name="datasetSeriesContactEmail"
+                            id="dataset-series-contact-email"
+                            dataTestId="dataset-series-contact-email"
+                            name="dataset-series-contact-email"
                             label={{
                                 text: 'Email: ',
                                 inline: true
                             }}
                             value={contactEmail}
                             onChange={e => setContactEmail(e.target.value)}
-                            error={ (contactEmailError) ? {id:'dataSeriesEmailError', text: 'Invalid email'} : undefined}
+                            error={ (contactEmailError) ? {id:'dataset-series-email-error', text: 'Invalid email'} : undefined}
                             />
                         </div>
                         <div className="ons-grid__col ons-col-2@m ">
                             <Button
-                            dataTestId="datasetSeriesAddContactButton"
-                            id="datasetSeriesAddContactButton"
+                            dataTestId="dataset-series-add-contact-button"
+                            id="dataset-series-add-contact-button"
                             text="Add contact"
                             variants={[
                                 'secondary',

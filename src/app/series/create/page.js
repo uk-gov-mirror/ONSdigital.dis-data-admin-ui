@@ -26,8 +26,8 @@ export default function Create() {
                     {text: error}
                 ]
             ))
-        } else if (formState.recentlySumbitted == true) {
-            formState.recentlySumbitted = false
+        } else if (formState.recentlySubmitted == true) {
+            formState.recentlySubmitted = false
             setTitle('')
             setID('')
             setDescription('')
@@ -67,41 +67,41 @@ export default function Create() {
             <h2 className="ons-u-mt-m">Series Details</h2>
             <form action={formAction}>
                 <TextInput
-                id="datasetSeriesTitle"
-                dataTestId="datasetSeriesTitle"
-                name="datasetSeriesTitle"
+                id="dataset-series-title"
+                dataTestId="dataset-series-title"
+                name="dataset-series-title"
                 label={{
                     text: 'Title'
                 }}
-                error={ (formState.errors && formState.errors.title) ? {id:'dataSeriesTitleError', text: formState.errors.title} : undefined}
+                error={ (formState.errors && formState.errors.title) ? {id:'dataset-series-title-error', text: formState.errors.title} : undefined}
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 />
                 <TextInput
-                id="datasetSeriesID"
-                dataTestId="datasetSeriesID"
-                name="datasetSeriesID"
+                id="dataset-series-id"
+                dataTestId="dataset-series-id"
+                name="dataset-series-id"
                 label={{
                     text: 'ID'
                 }}
-                error={(formState.errors && formState.errors.id)  ? {id:'dataSeriesIDError', text: formState.errors.id} : undefined}
+                error={(formState.errors && formState.errors.id)  ? {id:'dataset-series-id-error', text: formState.errors.id} : undefined}
                 value={id}
                 onChange={e => setID(e.target.value)}
                 />
                 <Field 
-                dataTestId="field-datasetseriesdescription"             
-                error={(formState.errors && formState.errors.description) ? {id:'dataSeriesDescriptionError', text: formState.errors.description} : undefined}    
+                dataTestId="field-dataset-series-description"             
+                error={(formState.errors && formState.errors.description) ? {id:'dataset-series-description-error', text: formState.errors.description} : undefined}    
                 >
                     <Label
-                    id="descriptionLabelID"
-                    dataTestId="descriptionLabelID"
-                    for="datasetSeriesDescription"
+                    id="description-label-id"
+                    dataTestId="description-label-id"
+                    for="dataset-series-description"
                     text="Description"
                     />
                     <textarea
                     value={description}
                     onChange={e => setDescription(e.target.value)} 
-                    name="datasetSeriesDescription" 
+                    name="dataset-series-description" 
                     rows={5} 
                     cols={80} />
                 </Field>

@@ -53,12 +53,13 @@ test.describe('create', () => {
         addValidAuthCookies(context);
 
         await page.goto('./series/create')
-        await page.getByLabel('Title').fill('test title');
-        await page.getByLabel('ID', {exact: true}).fill('test ID');
-        await page.getByTestId('field-datasetseriesdescription').getByRole('textbox').fill('test description');
-        await page.getByLabel('Name').fill('test name');
-        await page.getByLabel('Email').fill('test-email@test.com');
-        await page.getByRole('button', { name: /Add contact/i }).click();
+
+        await page.getByTestId('dataset-series-title').fill('test title');
+        await page.getByTestId('dataset-series-id', {exact: true}).fill('test ID');
+        await page.getByTestId('field-dataset-series-description').getByRole('textbox').fill('test description');
+        await page.getByTestId('dataset-series-contact-name').fill('test name');
+        await page.getByTestId('dataset-series-contact-email').fill('test-email@test.com');
+        await page.getByTestId('dataset-series-add-contact-button', { name: /Add contact/i }).click();
         await page.getByRole('button', { name: /Save new dataset series/i }).click();
 
         await expect(page.getByText('Form submitted successfully')).toBeVisible();
@@ -77,10 +78,10 @@ test.describe('create', () => {
         await expect(page.getByLabel('There was a problem').getByText('Description is required')).toBeVisible();
         await expect(page.getByLabel('There was a problem').getByText('Contact is required')).toBeVisible();
 
-        await expect(page.getByTestId('field-datasetseriestitle-error').getByText('Title is required')).toBeVisible();
-        await expect(page.getByTestId('field-datasetseriesid-error').getByText('ID is required')).toBeVisible();
-        await expect(page.getByTestId('field-datasetseriesdescription-error').getByText('Description is required')).toBeVisible();
-        await expect(page.getByTestId('field-datasetseriescontacts-error').getByText('Contact is required')).toBeVisible();
+        await expect(page.getByTestId('field-dataset-series-title-error').getByText('Title is required')).toBeVisible();
+        await expect(page.getByTestId('field-dataset-series-id-error').getByText('ID is required')).toBeVisible();
+        await expect(page.getByTestId('field-dataset-series-description-error').getByText('Description is required')).toBeVisible();
+        await expect(page.getByTestId('field-dataset-series-contacts-error').getByText('Contact is required')).toBeVisible();
     });
 
     test("Show error on invalid email", async ({ page, context }) => {
@@ -88,21 +89,21 @@ test.describe('create', () => {
 
         await page.goto('./series/create')
 
-        await page.getByLabel('Email').fill('test-email');
-        await page.getByRole('button', { name: /Add contact/i }).click();
-        await expect(page.getByTestId('field-datasetseriescontactemail-error').getByText('Invalid email')).toBeVisible();
+        await page.getByTestId('dataset-series-contact-email').fill('test-email');
+        await page.getByTestId('dataset-series-add-contact-button', { name: /Add contact/i }).click();
+        await expect(page.getByTestId('field-dataset-series-contact-email-error').getByText('Invalid email')).toBeVisible();
     });
 
     test("Does not allow duplicate dataset series to be created", async ({ page, context }) => {
         addValidAuthCookies(context);
 
         await page.goto('./series/create')
-        await page.getByLabel('Title').fill('test title');
-        await page.getByLabel('ID', {exact: true}).fill('test dup');
-        await page.getByTestId('field-datasetseriesdescription').getByRole('textbox').fill('test description');
-        await page.getByLabel('Name').fill('test name');
-        await page.getByLabel('Email').fill('tes-email@test.com');
-        await page.getByRole('button', { name: /Add contact/i }).click();
+        await page.getByTestId('dataset-series-title').fill('test title');
+        await page.getByTestId('dataset-series-id', {exact: true}).fill('test dup');
+        await page.getByTestId('field-dataset-series-description').getByRole('textbox').fill('test description');
+        await page.getByTestId('dataset-series-contact-name').fill('test name');
+        await page.getByTestId('dataset-series-contact-email').fill('tes-email@test.com');
+        await page.getByTestId('dataset-series-add-contact-button', { name: /Add contact/i }).click();
         await page.getByRole('button', { name: /Save new dataset series/i }).click();
 
         await expect(page.getByText('This datasetseries already exists')).toBeVisible();
